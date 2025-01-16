@@ -1,0 +1,7 @@
+C:\Users\conta\OneDrive\Área de Trabalho\Area de trabalho\Matheus\C# Projects VS\CSharpSmart\CSharpSmart\bin\Debug\CSharpSmart.exe.config
+C:\Users\conta\OneDrive\Área de Trabalho\Area de trabalho\Matheus\C# Projects VS\CSharpSmart\CSharpSmart\bin\Debug\CSharpSmart.exe
+C:\Users\conta\OneDrive\Área de Trabalho\Area de trabalho\Matheus\C# Projects VS\CSharpSmart\CSharpSmart\bin\Debug\CSharpSmart.pdb
+C:\Users\conta\OneDrive\Área de Trabalho\Area de trabalho\Matheus\C# Projects VS\CSharpSmart\CSharpSmart\obj\Debug\CSharpSmart.csproj.AssemblyReference.cache
+C:\Users\conta\OneDrive\Área de Trabalho\Area de trabalho\Matheus\C# Projects VS\CSharpSmart\CSharpSmart\obj\Debug\CSharpSmart.csproj.CoreCompileInputs.cache
+C:\Users\conta\OneDrive\Área de Trabalho\Area de trabalho\Matheus\C# Projects VS\CSharpSmart\CSharpSmart\obj\Debug\CSharpSmart.exe
+C:\Users\conta\OneDrive\Área de Trabalho\Area de trabalho\Matheus\C# Projects VS\CSharpSmart\CSharpSmart\obj\Debug\CSharpSmart.pdb

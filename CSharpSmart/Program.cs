@@ -25,7 +25,7 @@ namespace CSharpSmart
             Console.WriteLine("9 - Arquivo Funcionarios");
             Console.WriteLine("10 - Matriz 3x3");
 
-            Console.WriteLine("\nInsira o numero da operacao que deseja executar:");
+            Console.WriteLine("\nInsira o numero da operacao que deseja executar (ou digite 0 para sair):");
 
             int opcao = int.Parse(Console.ReadLine());
 
@@ -35,12 +35,12 @@ namespace CSharpSmart
                     verificarParOuImpar();
                     break;
 
-                case 2: 
-                    Console.WriteLine();
+                case 2:
+                    calculadora();
                     break;
 
                 case 3:
-                    Console.WriteLine();
+                    reajusteSalarial();
                     break;
 
                 case 4:
@@ -58,7 +58,7 @@ namespace CSharpSmart
                 case 7:
                     Console.WriteLine();
                     break;
-                
+
                 case 8:
                     Console.WriteLine();
                     break;
@@ -75,24 +75,87 @@ namespace CSharpSmart
                     Console.WriteLine("Numero invalido.");
                     break;
             }
-
         }
         public static void verificarParOuImpar()
         {
-            int a = 10;
+            Console.WriteLine("\nInsira um numero: ");
+            int a = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(a);
-            
+            if (a % 2 == 0)
+            {
+                Console.WriteLine("O numero e: Par\n");
+            }
+            else
+            {
+                Console.WriteLine("O numero e: Impar\n");
+            }
         }
 
         public static void calculadora()
         {
+            Console.WriteLine("Insira o tipo de operacao que deseja realizar: ");
+            Console.WriteLine("+ Adicao");
+            Console.WriteLine("- Subtracao");
+            Console.WriteLine("* Multiplicacao");
+            Console.WriteLine("/ Divisao");
+            string operacao = Console.ReadLine();
+
+            Console.WriteLine("Digite o primeiro numero: ");
+            int numA = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o segundo numero:");
+            int numB = int.Parse(Console.ReadLine());
+
+            double resultado;
+
+            if (operacao == "+")
+            {
+                resultado = numA + numB;
+                Console.WriteLine($"Resultado: {resultado}");
+            }
+            else if (operacao == "-")
+            {
+                resultado = numA - numB;
+                Console.WriteLine($"Resultado: {resultado}");
+            }
+            else if (operacao == "*")
+            {
+                 resultado = numA * numB;
+                Console.WriteLine($"Resultado: {resultado}");
+            }
+            else if (operacao == "/")
+            {
+                if (numB != 0)
+                {
+                    resultado = (double)numA / numB;
+                    Console.WriteLine($"Resultado: {resultado}");
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Nao e possivel dividir por zero");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Operacao Invalida");
+            }
 
         }
 
         public static void reajusteSalarial()
         {
+            Console.WriteLine("\nInforme seu salario:");
+            double salario = Double.Parse(Console.ReadLine());
+            double novoSalario;
+            
+            if (salario < 1700){
+                novoSalario = salario + 300;
+            }
+            else{
+                novoSalario = salario + 200;
+            }
 
+            Console.WriteLine($"\nSalario atual: {novoSalario}");
         }
 
         public static void calcularIMC()

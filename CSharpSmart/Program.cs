@@ -7,12 +7,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.Design;
+using System.ComponentModel;
 
 namespace CSharpSmart
 {
     class Program
     {
-        static void Main(string[] args){
+        static void Main(string[] args)
+        {
 
             Console.WriteLine("===== MENU =====\n");
 
@@ -62,15 +64,15 @@ namespace CSharpSmart
                     break;
 
                 case 8:
-                    Console.WriteLine();
+                    vetorInteiros();
                     break;
 
                 case 9:
-                    Console.WriteLine();
+                    arquivoCSVFuncionarios();
                     break;
 
                 case 10:
-                    Console.WriteLine();
+                    matriz();
                     break;
 
                 default:
@@ -122,7 +124,7 @@ namespace CSharpSmart
             }
             else if (operacao == "*")
             {
-                 resultado = numA * numB;
+                resultado = numA * numB;
                 Console.WriteLine($"Resultado: {resultado}");
             }
             else if (operacao == "/")
@@ -149,11 +151,13 @@ namespace CSharpSmart
             Console.WriteLine("\nInforme seu salario:");
             double salario = Double.Parse(Console.ReadLine());
             double novoSalario;
-            
-            if (salario < 1700){
+
+            if (salario < 1700)
+            {
                 novoSalario = salario + 300;
             }
-            else{
+            else
+            {
                 novoSalario = salario + 200;
             }
 
@@ -190,7 +194,7 @@ namespace CSharpSmart
                         break;
 
                     default:
-                        Console.WriteLine("Opcao invalida.");
+                        Console.WriteLine("Opcao invalida");
                         break;
                 }
             }
@@ -198,7 +202,8 @@ namespace CSharpSmart
 
         static void novoIMC()
         {
-            try {
+            try
+            {
                 Console.WriteLine("Informe seu nome: ");
                 string nome = Console.ReadLine();
 
@@ -215,22 +220,28 @@ namespace CSharpSmart
 
                 string resultadoIMC;
 
-                if (imc < 18.5) {
+                if (imc < 18.5)
+                {
                     resultadoIMC = "Abaixo do peso";
                 }
-                else if (imc < 24.9) {
+                else if (imc < 24.9)
+                {
                     resultadoIMC = "Peso normal";
                 }
-                else if (imc < 29.9) {
+                else if (imc < 29.9)
+                {
                     resultadoIMC = "Sobrepeso";
                 }
-                else if (imc < 34.9) {
+                else if (imc < 34.9)
+                {
                     resultadoIMC = "Obesidade Grau I";
                 }
-                else if (imc < 39.9) {
+                else if (imc < 39.9)
+                {
                     resultadoIMC = "Obesidade Grau II";
                 }
-                else {
+                else
+                {
                     resultadoIMC = "Obesidade Grau III";
                 }
 
@@ -247,11 +258,11 @@ namespace CSharpSmart
                 string caminho = "C:\\Users\\conta\\OneDrive\\Área de Trabalho\\Area de trabalho\\Matheus\\C# Projects VS\\CSharpSmart\\imc.txt";
                 File.AppendAllText(caminho, conteudo);
 
-                Console.WriteLine("Dados gravados com sucesso!");
+                Console.WriteLine("Dados gravados com sucesso");
             }
             catch (FormatException)
             {
-                Console.WriteLine("Erro: Formato invalido.");
+                Console.WriteLine("Erro: Formato invalido");
             }
             catch (Exception e)
             {
@@ -272,7 +283,7 @@ namespace CSharpSmart
             }
             else
             {
-                Console.WriteLine("Nenhum registro encontrado.");
+                Console.WriteLine("Nenhum registro encontrado");
             }
         }
 
@@ -308,13 +319,13 @@ namespace CSharpSmart
                 float altura = float.Parse(Console.ReadLine());
 
                 if (altura > maiorAltura)
-                {   
+                {
                     maiorAltura = altura;
                     alunoMaisAlto = nome;
 
                 }
             }
-                Console.WriteLine("O aluno mais alto e: " + alunoMaisAlto);
+            Console.WriteLine("O aluno mais alto e: " + alunoMaisAlto);
 
         }
 
@@ -327,17 +338,116 @@ namespace CSharpSmart
 
         public static void vetorInteiros()
         {
+            int[] valores = new int[10];
+            int soma = 0;
+
+            Console.WriteLine("Digite 10 numeros inteiros!\n");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"Digite o {i + 1}º valor: ");
+                valores[i] = int.Parse(Console.ReadLine());
+                soma += valores[i];
+            }
+
+            Console.WriteLine($"\nSoma dos valores do vetor: {soma}");
 
         }
 
         public static void arquivoCSVFuncionarios()
         {
+            string caminho = "C:\\Users\\conta\\OneDrive\\Área de Trabalho\\Area de trabalho\\Matheus\\C# Projects VS\\CSharpSmart\\csvFuncionarios.csv";
 
+            string[] linhas =
+            {
+                "1000;Fernanda;Programador",
+                "5500;Marcela;Gerente de Projetos",
+                "4000;João;Analista Pleno",
+                "2500;Maria;Analista Jr"
+            };
+
+            try
+            {
+                File.WriteAllLines(caminho, linhas);
+
+                Console.WriteLine("\nArquivo CSV criado com sucesso\n");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+            }
+
+            if (File.Exists(caminho))
+            {
+                string[] linhasCsv = File.ReadAllLines(caminho);
+                foreach (string linha in linhasCsv)
+                {
+                    string[] dados = linha.Split(';');
+                    Console.WriteLine($"Salario: {dados[0]} - Funcionario: {dados[1]} - Cargo: {dados[2]}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Arquivo nao encontrado");
+            }
         }
 
         public static void matriz()
         {
+            int[,] matriz = new int[3, 3];
 
+            // i = linhas
+            //j = colunas
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.WriteLine($"Digite o valor da posicao [{i}, {j}]: ");
+                    matriz[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            Console.WriteLine("\nMatriz 3x3 Impressa\n");
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write(matriz[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\nMatriz 3x3 Ordenada\n");
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    for (int k = 0; k < 3; k++)
+                    {
+                        for (int l = 0; l < 3; l++)
+                        {
+                            if (matriz[i, j] < matriz[k, l])
+                            {
+                                int matrizOrdenacao = matriz[i, j];
+                                matriz[i, j] = matriz[k, l];
+                                matriz[k, l] = matrizOrdenacao;
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write(matriz[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

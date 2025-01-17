@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.Design;
 
 namespace CSharpSmart
 {
@@ -53,11 +54,11 @@ namespace CSharpSmart
                     break;
 
                 case 6:
-                    Console.WriteLine();
+                    verificarAlturaAluno();
                     break;
 
                 case 7:
-                    Console.WriteLine();
+                    contaCorrente();
                     break;
 
                 case 8:
@@ -161,7 +162,8 @@ namespace CSharpSmart
 
         public static void calcularIMC()
         {
-            while (true)
+            bool menu = true;
+            while (menu)
             {
                 Console.WriteLine("======= Calculo IMC =======");
                 Console.WriteLine("N - Novo");
@@ -172,7 +174,7 @@ namespace CSharpSmart
 
                 Console.WriteLine("===========================");
 
-                switch (opc)
+                switch (opc.ToUpper())
                 {
                     case "N":
                         novoIMC();
@@ -184,6 +186,7 @@ namespace CSharpSmart
 
                     case "S":
                         Console.WriteLine("Encerrando operacao...");
+                        menu = false;
                         break;
 
                     default:
@@ -293,12 +296,33 @@ namespace CSharpSmart
 
         public static void verificarAlturaAluno()
         {
+            string alunoMaisAlto = "";
+            float maiorAltura = 0.0f;
+
+            for (int i = 1; i <= 5; i++)
+            {
+                Console.WriteLine($"\nDigite o nome do {i}º aluno: ");
+                string nome = Console.ReadLine();
+
+                Console.WriteLine($"\nDigite a altura do {i}º aluno: ");
+                float altura = float.Parse(Console.ReadLine());
+
+                if (altura > maiorAltura)
+                {   
+                    maiorAltura = altura;
+                    alunoMaisAlto = nome;
+
+                }
+            }
+                Console.WriteLine("O aluno mais alto e: " + alunoMaisAlto);
 
         }
 
         public static void contaCorrente()
         {
+            ContaCorrente conta = new ContaCorrente(1, "Matheus Reginato Rezende", 1500);
 
+            conta.MenuBanco();
         }
 
         public static void vetorInteiros()

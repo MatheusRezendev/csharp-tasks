@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -44,11 +45,11 @@ namespace CSharpSmart
                     break;
 
                 case 4:
-                    Console.WriteLine();
+                    calcularIMC();
                     break;
 
                 case 5:
-                    Console.WriteLine();
+                    contarVogais();
                     break;
 
                 case 6:
@@ -160,12 +161,134 @@ namespace CSharpSmart
 
         public static void calcularIMC()
         {
+            while (true)
+            {
+                Console.WriteLine("======= Calculo IMC =======");
+                Console.WriteLine("N - Novo");
+                Console.WriteLine("C - Consultar");
+                Console.WriteLine("S - Sair");
 
+                string opc = Console.ReadLine();
+
+                Console.WriteLine("===========================");
+
+                switch (opc)
+                {
+                    case "N":
+                        novoIMC();
+                        break;
+
+                    case "C":
+                        consultarIMC();
+                        break;
+
+                    case "S":
+                        Console.WriteLine("Encerrando operacao...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Opcao invalida.");
+                        break;
+                }
+            }
+        }
+
+        static void novoIMC()
+        {
+            try {
+                Console.WriteLine("Informe seu nome: ");
+                string nome = Console.ReadLine();
+
+                Console.WriteLine("Informe sua idade: ");
+                int idade = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Informe seu peso: ");
+                float peso = float.Parse(Console.ReadLine());
+
+                Console.WriteLine("Informe sua altura: ");
+                float altura = float.Parse(Console.ReadLine());
+
+                float imc = peso / (altura * altura);
+
+                string resultadoIMC;
+
+                if (imc < 18.5) {
+                    resultadoIMC = "Abaixo do peso";
+                }
+                else if (imc < 24.9) {
+                    resultadoIMC = "Peso normal";
+                }
+                else if (imc < 29.9) {
+                    resultadoIMC = "Sobrepeso";
+                }
+                else if (imc < 34.9) {
+                    resultadoIMC = "Obesidade Grau I";
+                }
+                else if (imc < 39.9) {
+                    resultadoIMC = "Obesidade Grau II";
+                }
+                else {
+                    resultadoIMC = "Obesidade Grau III";
+                }
+
+                Console.WriteLine($"Resultado: {resultadoIMC}");
+
+                string conteudo = $"Nome: {nome} \n" +
+                    $"Idade: {idade} \n" +
+                    $"Peso: {peso} kg \n" +
+                    $"Altura: {altura} m \n" +
+                    $"IMC: {imc:F2} \n" +
+                    $"Resultado: {resultadoIMC}\n" +
+                    $"===========================\n";
+
+                string caminho = "C:\\Users\\conta\\OneDrive\\Área de Trabalho\\Area de trabalho\\Matheus\\C# Projects VS\\CSharpSmart\\imc.txt";
+                File.AppendAllText(caminho, conteudo);
+
+                Console.WriteLine("Dados gravados com sucesso!");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Erro: Formato invalido.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+            }
+        }
+
+        static void consultarIMC()
+        {
+            string caminho = "C:\\Users\\conta\\OneDrive\\Área de Trabalho\\Area de trabalho\\Matheus\\C# Projects VS\\CSharpSmart\\imc.txt";
+            if (File.Exists(caminho))
+            {
+                string[] linhas = File.ReadAllLines(caminho);
+                foreach (string linha in linhas)
+                {
+                    Console.WriteLine(linha);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum registro encontrado.");
+            }
         }
 
         public static void contarVogais()
         {
+            Console.WriteLine("Digite a string que sera contada: ");
+            string texto = Console.ReadLine();
 
+            int vogais = 0;
+
+            for (int i = 0; i < texto.Length; i++)
+            {
+                if (texto[i] == 'a' || texto[i] == 'e' || texto[i] == 'i' || texto[i] == 'o' || texto[i] == 'u')
+                {
+                    vogais++;
+                }
+            }
+
+            Console.WriteLine($"A quantidade de vogais e: {vogais}");
         }
 
         public static void verificarAlturaAluno()

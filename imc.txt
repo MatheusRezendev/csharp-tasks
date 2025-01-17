@@ -1,0 +1,14 @@
+Nome: Matheus 
+Idade: 20 
+Peso: 85 kg 
+Altura: 1,77 m 
+IMC: 27,13 
+Resultado: Sobrepeso
+============================
+Nome: Manu 
+Idade: 21 
+Peso: 67 kg 
+Altura: 1,66 m 
+IMC: 24,31 
+Resultado: Peso normal
+============================
